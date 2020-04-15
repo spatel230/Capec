@@ -4,7 +4,7 @@ import org.w3c.dom.*;
 import javax.xml.xpath.*;
 
 public class CapecXPath {
-	public static void display() {
+	public static void display(String key) {
 		try {
 			DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 			DocumentBuilder db =dbf.newDocumentBuilder();
@@ -17,10 +17,12 @@ public class CapecXPath {
 				System.out.println("Name:" + xp.compile("./@Name").evaluate(nl.item(i)));
 				System.out.println("Description: "+ xp.compile("./Description").evaluate(nl.item(i)));
 				System.out.println("===="); */
+				key="RFID";
 				String x= xp.compile("./Description").evaluate(nl.item(i));
-				if(x.contains("RFID")) {
-					System.out.println("Name: "+xp.compile("./@Name").evaluate(nl.item(i)) +"\nDescription: "
-				+xp.compile("./Description").evaluate(nl.item(i))+"\nLikelihood Of Attack: "+xp.compile("./Likelihood_Of_Attack").evaluate(nl.item(i)));
+				if(x.contains(key)) {
+					System.out.println("Attack Pattern: "+ xp.compile("./@ID").evaluate(nl.item(i))+"\nName: "+xp.compile("./@Name").evaluate(nl.item(i)) +"\nDescription: "
+				+xp.compile("./Description").evaluate(nl.item(i)));
+					System.out.println("Likelihood Of Attack: "+xp.compile("./Typical_Severity").evaluate(nl.item(i)));
 				}
 				}
 			System.out.println();

@@ -17,7 +17,6 @@ public class CapecXPath {
 				System.out.println("Name:" + xp.compile("./@Name").evaluate(nl.item(i)));
 				System.out.println("Description: "+ xp.compile("./Description").evaluate(nl.item(i)));
 				System.out.println("===="); */
-				key="RFID";
 				String x= xp.compile("./Description").evaluate(nl.item(i));
 				if(x.contains(key)) {
 					System.out.println("Attack Pattern: "+ xp.compile("./@ID").evaluate(nl.item(i))+"\nName: "+xp.compile("./@Name").evaluate(nl.item(i)) +"\nDescription: "
